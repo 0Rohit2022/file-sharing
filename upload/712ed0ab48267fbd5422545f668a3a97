@@ -1,0 +1,184 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 29, 2022 at 11:59 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `coin_network`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin`
+--
+
+CREATE TABLE `tbl_admin` (
+  `user_id` int(20) NOT NULL,
+  `user_name` varchar(30) NOT NULL,
+  `user_password` varchar(30) NOT NULL,
+  `user_email` varchar(20) NOT NULL,
+  `isactive` tinyint(1) NOT NULL,
+  `insert_date` datetime(6) NOT NULL,
+  `modified_date` datetime(6) NOT NULL,
+  `modified_by` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_chain`
+--
+
+CREATE TABLE `tbl_chain` (
+  `chain_id` int(20) NOT NULL,
+  `chain_name` varchar(20) NOT NULL,
+  `chain_desc` varchar(200) NOT NULL,
+  `isactive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_plan`
+--
+
+CREATE TABLE `tbl_plan` (
+  `plan_id` int(20) NOT NULL,
+  `plan_name` varchar(20) NOT NULL,
+  `plan_desc` varchar(200) NOT NULL,
+  `isactive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_project`
+--
+
+CREATE TABLE `tbl_project` (
+  `id` int(20) NOT NULL,
+  `proj_type_id` int(20) NOT NULL,
+  `proj_plan_id` int(20) NOT NULL,
+  `proj_name` varchar(50) NOT NULL,
+  `proj_desc` varchar(200) NOT NULL,
+  `proj_symbol` varchar(200) NOT NULL,
+  `proj_logo` varchar(150) NOT NULL,
+  `proj_launch_date` datetime(6) NOT NULL,
+  `proj_chain_id` int(20) NOT NULL,
+  `proj_cont_add` varchar(100) NOT NULL,
+  `proj_view` int(50) NOT NULL,
+  `proj_airdrop_url` varchar(100) NOT NULL,
+  `proj_airdrop_rewards` varchar(150) NOT NULL,
+  `proj_airdrop_rewards_value` int(20) NOT NULL,
+  `proj_website` varchar(50) NOT NULL,
+  `proj_telegram` varchar(50) NOT NULL,
+  `proj_twitter` varchar(50) NOT NULL,
+  `proj_facebook` varchar(50) NOT NULL,
+  `proj_discord` varchar(50) NOT NULL,
+  `proj_reddit` varchar(50) NOT NULL,
+  `isactive` tinyint(1) NOT NULL,
+  `insert_date` datetime(6) NOT NULL,
+  `modified_date` datetime(6) NOT NULL,
+  `modified_by` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_projecttype`
+--
+
+CREATE TABLE `tbl_projecttype` (
+  `projecttype_id` int(10) NOT NULL,
+  `projecttype_name` varchar(20) NOT NULL,
+  `projecttype_desc` varchar(200) NOT NULL,
+  `isactive` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `tbl_chain`
+--
+ALTER TABLE `tbl_chain`
+  ADD PRIMARY KEY (`chain_id`);
+
+--
+-- Indexes for table `tbl_plan`
+--
+ALTER TABLE `tbl_plan`
+  ADD PRIMARY KEY (`plan_id`);
+
+--
+-- Indexes for table `tbl_project`
+--
+ALTER TABLE `tbl_project`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_projecttype`
+--
+ALTER TABLE `tbl_projecttype`
+  ADD PRIMARY KEY (`projecttype_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `user_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_chain`
+--
+ALTER TABLE `tbl_chain`
+  MODIFY `chain_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_plan`
+--
+ALTER TABLE `tbl_plan`
+  MODIFY `plan_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_project`
+--
+ALTER TABLE `tbl_project`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_projecttype`
+--
+ALTER TABLE `tbl_projecttype`
+  MODIFY `projecttype_id` int(10) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
